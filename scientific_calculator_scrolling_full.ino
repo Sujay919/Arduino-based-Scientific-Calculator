@@ -27,7 +27,7 @@
       float asina,acosa,atana,expa,loga,root;
       double pi = 3.1415926535 ;
       int sinp=10, cosp=11, tanp=12, logp=13;
-      char val,action[10];
+      char action[10];
       String que;
       Keypad keysujay = Keypad(makeKeymap(key), rowpin , colpin , row , col);
       Keypad keysujay1 = Keypad(makeKeymap(key1), rowpin , colpin , row , col);
@@ -59,14 +59,14 @@
             i=0;
             s=0;
             while(r==0){
-              val=getval();
+              char val=getval();
                 if(val and val=='r'){
                   r=1;
                   s=0;
                   sujaylcd.clear();
                   que='\u0000';
                 }
-                else if (val and val=='1'){
+                else if (val and val=='m'){
                   s=0;
                   if((que.length())>16 and i>=0){
                   i++;
@@ -77,14 +77,14 @@
                   // delay(200);
                   }
                 }
-                else if (val and val=='2'){
+                else if (val and val=='n'){
                   s=0;
                   if((que.length())>16 and i>0){
                   i--;
                   sujaylcd.setCursor(0,0);
                   sujaylcd.print("                             ");
                   sujaylcd.setCursor(0,0);
-                  sujaylcd.print(que.substring(i,i+15));
+                  sujaylcd.print(que.substring(i,i+16));
                   // delay(200);
                   }
                 }  
@@ -108,7 +108,7 @@
       Serial.println(i);
       while(b==0){
          while(ans!=1){
-            val=getval();
+            char val=getval();
             Serial.println(val);
             if (val and val=='s'){
               // sujaylcd.clear();
@@ -621,9 +621,9 @@
         
       }
       char getval(){
-         
+         char val;
             if(s==0){
-              val=keysujay.getKey();
+               val=keysujay.getKey();
             }
             else{
               val=keysujay1.getKey();
